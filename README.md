@@ -163,7 +163,7 @@ return codeSandbox1.executeCode() + " "+codeSandbox2.executeCode();
 
 #### 代码示例
 
-​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/AbstractCodeSandboxFactory
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/AbstractFactoryPatter
 
 ![image-20241015193307245](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241015193307245.png)
 
@@ -204,3 +204,158 @@ return codeSandbox1.executeCode()+" "+codeSandbox2.executeCode();
 ##### 测试
 
 ![image-20241015193130051](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241015193130051.png)
+
+### 单例模式
+
+​	又称单件模式或单态模式，属于创建型模式。
+
+​	通过让一个类自身保存它的唯一实例，这个类可以确保没有被其他实例被创建，并且它可以提供一个访问该实例的方法。
+
+​	一般用于创建一个全局需要的对象，且这个对象只有一个。
+
+​	单例模式分为：1.饿汉式，2.懒汉式
+
+#### 代码示例
+
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/SingletonPatter
+
+![image-20241016183323847](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241016190326968.png)
+
+##### 流程解读
+
+![image-20241016184158955](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241016184158955.png)
+
+##### 核心代码
+
+饿汉式单例模式
+
+~~~java
+@Getter
+public class HungryConfig {
+    private String time;
+    private String name;
+    private static HungrySingletConfig hungrySingleConfig =null;
+    private  HungrySingletConfig(){
+        initConfig();
+        System.out.println("产生实例");
+    }
+    public static HungrySingletConfig getInstance(){
+        if(hungrySingleConfig==null){
+            hungrySingleConfig = new HungrySingletConfig();
+        }
+        return hungrySingleConfig;
+    }
+    private void initConfig(){
+        this.name="Djhhh";
+        this.time="Time is now";
+    }
+}
+~~~
+
+懒汉式单例模式
+
+```java
+@Getter
+public class LazyConfig {
+    private String time;
+    private String name;
+    private static final LazySingletonConfig lazySingletonConfig = new LazySingletonConfig();
+    private LazySingletonConfig(){
+        initConfig();
+        System.out.println("产生实例");
+    }
+    public static LazySingletonConfig getInstance(){
+        return lazySingletonConfig;
+    }
+    private void initConfig(){
+        this.name="Djhhh";
+        this.time="Time is now";
+    }
+}
+```
+
+##### 调用
+
+~~~java
+String result="";
+result+="准备创建懒汉式实例\n";
+LazySingletonConfig lazySingletonConfig=LazySingletonConfig.getInstance();
+result+=lazySingletonConfig.getName()+"\n";
+result+=lazySingletonConfig.getTime()+"\n";
+result+="准备创建饿汉式实例\n";
+HungrySingletConfig hungrySingletConfig=HungrySingletConfig.getInstance();
+result+=hungrySingletConfig.getName()+"\n";
+result+=hungrySingletConfig.getTime()+"\n";
+~~~
+
+##### 测试
+
+![image-20241016183213318](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241016183213318.png)
+
+### 原型模式
+
+​	创建型模式。
+
+​	通过复制现有的实例来创建新的实例，无需知道相应类的信息。
+
+​	在项目中，部分对象的创建可能比较复杂，并且有时可能需要频繁的创建同一个类似的实体，这时我们采用原型模式。
+
+#### 代码示例
+
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/PrototypePatter
+
+![image-20241016194845868](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241016194845868.png)
+
+##### 流程解读
+
+![image-20241016195228920](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241016195228920.png)
+
+##### 核心代码
+
+```java
+@Getter
+@Setter
+public class Tank implements Cloneable {
+    private String bullet;
+    private Tank tank;
+    public Tank(){
+        this.bullet="子弹未配置";
+    }
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        Tank tank= (Tank) super.clone();
+        if (this.tank != null) {
+            tank.tank = (Tank) this.tank.clone();
+        }
+        return tank;
+    }
+}
+```
+
+##### 调用
+
+~~~java
+@Service
+public class TankServiceImpl implements TankService {
+    @Override
+    public String tankList() throws CloneNotSupportedException {
+        StringBuilder result = new StringBuilder();
+        Tank tank = new Tank();
+        tank.setTank(new Tank()); // 初始化 tank 属性
+        result.append("创建tank原型").append(tank).append(",子弹类型为:").append(tank.getBullet());
+        tank.setBullet("bb");
+        for (int i = 1; i <= 10; i++) {
+            result.append("创建tank原型").append(i).append("号");
+            Tank tank1 = (Tank) tank.clone();
+            result.append(tank1);
+            tank1.setBullet(tank1.getBullet() + i);
+            result.append("子弹类型:").append(tank1.getBullet());
+        }
+        return result.toString();
+    }
+}
+~~~
+
+##### 测试
+
+![image-20241016194938249](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241016194938249.png)
