@@ -1,2 +1,12 @@
 server:
   port: 8080
+#  工厂方法模式 FactoryMethodPattern
+#  简单工厂模式 SimpleFactoryPattern
+#  抽象工厂模式 AbstractFactoryPatter
+#  单例模式 SingletonPatter
+#  原型模式 PrototypePatter
+#  建造者模式 BuilderPatter
+#  外观模式 FacadePatter
+#  适配器模式 AdapterPatter
+#  桥接模式 BridgePatter
+patter: BridgePatter

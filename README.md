@@ -54,7 +54,7 @@
 
 ## 23+1种设计模式
 
-### 简单工厂模式
+### 简单工厂模式（SimpleFactoryPattern）
 
 ​	简单工厂模式不属于23种GOF设计模式之一，但是非常常用所以一般将其归纳成一种设计模式。
 
@@ -101,7 +101,7 @@ CodeSandbox codeSandbox = CodeSandboxFactory.newInstance(type);
 
 ![image-20241015183926080](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241015183926080.png)
 
-### 工厂方法模式
+### 工厂方法模式（FactoryMethodPattern）
 
 ​	又称工厂模式、虚拟构造器模式、多态工厂模式，属于类创建型模式。
 
@@ -153,9 +153,9 @@ return codeSandbox1.executeCode() + " "+codeSandbox2.executeCode();
 
 ![image-20241015183816503](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241015183816503.png)
 
-### 抽象工厂模式
+### 抽象工厂模式（AbstractFactoryPatter）
 
-​	投诚Kit模式，属于创建型设计模式。
+​	属于创建型设计模式。
 
 ​	提供一个创建一些列相关或相互依赖的对象的接口，而无须指定他们具体的类。
 
@@ -205,7 +205,7 @@ return codeSandbox1.executeCode()+" "+codeSandbox2.executeCode();
 
 ![image-20241015193130051](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241015193130051.png)
 
-### 单例模式
+### 单例模式（SingletonPatter）
 
 ​	又称单件模式或单态模式，属于创建型模式。
 
@@ -292,7 +292,7 @@ result+=hungrySingletConfig.getTime()+"\n";
 
 ![image-20241016183213318](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241016183213318.png)
 
-### 原型模式
+### 原型模式（PrototypePatter）
 
 ​	创建型模式。
 
@@ -359,3 +359,313 @@ public class TankServiceImpl implements TankService {
 ##### 测试
 
 ![image-20241016194938249](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241016194938249.png)
+
+### 建造者模式（BuildePatter）
+
+​	创建型设计模式。
+
+​	将一个复杂对象的构建与他的表示分离，使得同样的构建过程可以创建不同的表示。
+
+​	建造者模式包含以下角色：
+
+-   产品Product：要构建的复杂对象。
+-   抽象建造者Builder：定义了构建产品的抽象接口。
+-   具体建造者ConcreteBuilder：实现抽象建造接口，具体确定如何构建产品的各个部分，并负责返回最终构建的产品。
+-   指导者Director：负责调用建造者的方法来构建产品。
+
+​	当在系统中，存在一个复杂对象需要重复创建，并且在每次创建的时候基本组件的种类基本不变，但是组合需要灵活变化，那么我们可以使用建筑者模式进行设计。
+
+#### 代码示例
+
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/BuildePatter
+
+![image-20241027163039015](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027163039015.png)
+
+##### 流程解读
+
+![image-20241027162925542](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027162925542.png)
+
+##### 核心代码
+
+```java
+public interface Builder {
+    void buildWord1();
+    void buildWord2();
+}
+public class ConcreteBuilder1 implements Builder{ //此处只展示ConcreteBuilder1
+    private Product product=new Product();
+    @Override
+    public void buildWord1() { this.product.setWord1("word1"); }
+    @Override
+    public void buildWord2() { this.product.setWord2("word2"); }
+    public Product getProduct() {  return product; }
+}
+public class Director {
+    private Builder builder;
+    public Director(Builder builder){  this.builder=builder;  }
+    public void setBuilder(Builder builder) { this.builder = builder;}
+    public void construct(){
+        builder.buildWord1();
+        builder.buildWord2();
+    }
+}
+@Data
+public class Product {
+    private String word1;
+    private String word2;
+}
+```
+
+##### 调用
+
+~~~java
+@Service
+public class WordServiceImpl implements WordService {
+    @Override
+    public String word() {
+        String result="";
+        ConcreteBuilder1 builder1=new ConcreteBuilder1();
+        ConcreteBuilder2 builder2=new ConcreteBuilder2();
+        Director director=new Director(builder1);
+        director.construct();
+        result+=builder1.getProduct().toString();
+        director.setBuilder(builder2);
+        director.construct();
+        result+='\n'+builder2.getProduct().toString();
+        return result;
+    }
+}
+~~~
+
+##### 测试
+
+![image-20241027161956767](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027161956767.png)
+
+### 外观模式（FacadePatter）
+
+​	属于结构型设计模式。
+
+​	外部与一个子系统的通信必须通过一个统一的外观对象进行，为子系统中的一组接口提供一个一致的接口，外观模式定义了一个高层接口，这个接口使得子系统更加容易使用。
+
+​	降低系统的复杂度，让子系统通过一个统一的外观对象进行调用。
+
+#### 代码示例
+
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/FacadePatter
+
+![image-20241027192054581](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027192054581.png)
+
+##### 流程解读
+
+![image-20241027173250780](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027173250780.png)
+
+##### 核心代码
+
+~~~java
+public class Facade {
+    private static Facade facade=new Facade();
+    private C1 c1;
+    private C2 c2;
+    private C3 c3;
+    private Facade(){
+        c1=new C1();
+        c2=new C2();
+        c3=new C3();
+    }
+    public static Facade getInstance(){
+        return facade;
+    }
+    public String doA(){
+        return this.c1.go();
+    }
+    public String doB(){
+        return this.c1.go()+" "+this.c2.go()+" "+this.c3.go();
+    }
+}
+~~~
+
+##### 调用
+
+~~~java
+@Service
+public class CSserviceImpl implements CService {
+    @Override
+    public String doC() {
+        Facade facade=Facade.getInstance();
+        return facade.doA()+" "+facade.doB();
+    }
+}
+~~~
+
+##### 测试
+
+![image-20241027172825310](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027172825310.png)
+
+### 适配器模式（AdapterPatter）
+
+​	属于结构型设计模式。
+
+​	将一个类的接口转换为另一个接口，使得原本不兼容的类可以协同工作。
+
+​	本质上来说，就是对于一个旧的对象，我们想要这个对象保留之前的部分属性，还要适配现在新的环境。我们可以通过适配器模式，通过继承之前的对象，然后添加新的属性来进行适配。
+
+#### 代码示例
+
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/AdapterPatter
+
+![image-20241027192035592](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027192035592.png)
+
+##### 流程解读
+
+![image-20241027192004356](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027192004356.png)
+
+##### 核心代码
+
+~~~java
+public interface Electricity {
+    public String recharge(String type);
+}
+public class NewWiring implements Recharge{
+    @Override
+    public String recharge220() {
+        return "充220";
+    }
+    @Override
+    public String recharge110() {
+        return "不充";
+    }
+}
+public class OldWiring implements Recharge{
+    @Override
+    public String recharge220() {
+        return "不充";
+    }
+    @Override
+    public String recharge110() {
+        return "充110";
+    }
+}
+public interface Recharge {
+    public String recharge220();
+    public String recharge110();
+}
+public class ElectricityAdapter implements Electricity{
+    Recharge recharge;
+    public ElectricityAdapter(String type){
+        if("220".equals(type)){
+            recharge = new NewWiring();
+        }else{
+            recharge = new OldWiring();
+        }
+    }
+    @Override
+    public String recharge(String type) {
+        if(type.equals("220")){
+           return recharge.recharge220();
+        }else{
+           return recharge.recharge110();
+        }
+    }
+}
+public class Wiring implements Electricity{
+    ElectricityAdapter electricityAdapter;
+    @Override
+    public String recharge(String type){
+        electricityAdapter=new ElectricityAdapter(type);
+        return electricityAdapter.recharge(type);
+    }
+}
+~~~
+
+##### 调用
+
+~~~java
+@Service
+public class WiringServiceImpl implements WiringService {
+    @Override
+    public String doRecharge() {
+        Wiring wiring=new Wiring();
+        String s = wiring.recharge("220");
+        s +=" " + wiring.recharge("110");
+        return s;
+    }
+}
+~~~
+
+##### 测试
+
+![image-20241027190905517](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027190905517.png)
+
+### 桥接模式（BridgePatter）
+
+​	属于结构型设计模式。
+
+​	将抽象部分与它的实现部分分离，使它们都可以独立的变化。
+
+#### 代码示例
+
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/BridgePatter
+
+![image-20241027195531789](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027195531789.png)
+
+##### 流程解读
+
+![image-20241027195926276](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027195926276.png)
+
+##### 核心代码
+
+~~~java
+public class GreenCirlce implements MadeCircle {
+    @Override
+    public String makeCircle(int radius, int x, int y) {
+        return "半径:"+radius+";颜色:Green;x:"+x+";y:"+y+";";
+    }
+}
+public class RedCircle implements MadeCircle{
+    @Override
+    public String makeCircle(int radius, int x, int y) {
+        return "半径:"+radius+";颜色:Red;x:"+x+";y:"+y+";";
+    }
+}
+public interface MadeCircle {
+    public String makeCircle(int radius, int x, int y);
+}
+public abstract class Shape {
+    protected MadeCircle madeCircle;
+    protected Shape(MadeCircle madeCircle){
+        this.madeCircle=madeCircle;
+    }
+    public abstract String made();
+}
+public class Circle extends Shape{
+    private int x,y,radius;
+    public Circle(int x,int y,int radius,MadeCircle madeCircle){
+        super(madeCircle);
+        this.x=x;
+        this.y=y;
+        this.radius=radius;
+    }
+    @Override
+    public String made() {
+        return madeCircle.makeCircle(radius,x,y);
+    }
+}
+~~~
+
+##### 调用
+
+~~~java
+@Service
+public class CircleServiceImpl implements CircleService {
+    @Override
+    public String makeCircle() {
+        Shape redCircle=new Circle(1,1,1,new RedCircle());
+        Shape greenCircle=new Circle(1,1,1,new GreenCirlce());
+        return redCircle.made()+greenCircle.made();
+    }
+}
+~~~
+
+##### 测试
+
+![image-20241027195427923](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027195427923.png)
