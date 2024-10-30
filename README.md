@@ -44,8 +44,6 @@
 
 #### 创建型设计模式
 
-​	对类实例化过程进行了抽象，能够对软件模块中对象的创建和对象的使用进行分离。
-
 #### 结果型设计模式
 
 #### 行为型设计模式
@@ -153,7 +151,7 @@ return codeSandbox1.executeCode() + " "+codeSandbox2.executeCode();
 
 ![image-20241015183816503](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241015183816503.png)
 
-### 抽象工厂模式（AbstractFactoryPatter）
+### 抽象工厂模式（AbstractFactoryPattern）
 
 ​	属于创建型设计模式。
 
@@ -163,7 +161,7 @@ return codeSandbox1.executeCode() + " "+codeSandbox2.executeCode();
 
 #### 代码示例
 
-​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/AbstractFactoryPatter
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/AbstractFactoryPattern
 
 ![image-20241015193307245](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241015193307245.png)
 
@@ -205,7 +203,7 @@ return codeSandbox1.executeCode()+" "+codeSandbox2.executeCode();
 
 ![image-20241015193130051](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241015193130051.png)
 
-### 单例模式（SingletonPatter）
+### 单例模式（SingletonPattern）
 
 ​	又称单件模式或单态模式，属于创建型模式。
 
@@ -217,7 +215,7 @@ return codeSandbox1.executeCode()+" "+codeSandbox2.executeCode();
 
 #### 代码示例
 
-​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/SingletonPatter
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/SingletonPattern
 
 ![image-20241016183323847](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241016190326968.png)
 
@@ -292,7 +290,7 @@ result+=hungrySingletConfig.getTime()+"\n";
 
 ![image-20241016183213318](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241016183213318.png)
 
-### 原型模式（PrototypePatter）
+### 原型模式（PrototypePattern）
 
 ​	创建型模式。
 
@@ -302,7 +300,7 @@ result+=hungrySingletConfig.getTime()+"\n";
 
 #### 代码示例
 
-​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/PrototypePatter
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/PrototypePattern
 
 ![image-20241016194845868](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241016194845868.png)
 
@@ -360,7 +358,7 @@ public class TankServiceImpl implements TankService {
 
 ![image-20241016194938249](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241016194938249.png)
 
-### 建造者模式（BuildePatter）
+### 建造者模式（BuildePattern）
 
 ​	创建型设计模式。
 
@@ -377,7 +375,7 @@ public class TankServiceImpl implements TankService {
 
 #### 代码示例
 
-​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/BuildePatter
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/BuildePattern
 
 ![image-20241027163039015](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027163039015.png)
 
@@ -441,7 +439,7 @@ public class WordServiceImpl implements WordService {
 
 ![image-20241027161956767](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027161956767.png)
 
-### 外观模式（FacadePatter）
+### 外观模式（FacadePattern）
 
 ​	属于结构型设计模式。
 
@@ -451,7 +449,7 @@ public class WordServiceImpl implements WordService {
 
 #### 代码示例
 
-​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/FacadePatter
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/FacadePattern
 
 ![image-20241027192054581](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027192054581.png)
 
@@ -501,7 +499,7 @@ public class CSserviceImpl implements CService {
 
 ![image-20241027172825310](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027172825310.png)
 
-### 适配器模式（AdapterPatter）
+### 适配器模式（AdapterPattern）
 
 ​	属于结构型设计模式。
 
@@ -511,7 +509,7 @@ public class CSserviceImpl implements CService {
 
 #### 代码示例
 
-​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/AdapterPatter
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/AdapterPattern
 
 ![image-20241027192035592](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027192035592.png)
 
@@ -596,7 +594,7 @@ public class WiringServiceImpl implements WiringService {
 
 ![image-20241027190905517](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027190905517.png)
 
-### 桥接模式（BridgePatter）
+### 桥接模式（BridgePattern）
 
 ​	属于结构型设计模式。
 
@@ -604,7 +602,7 @@ public class WiringServiceImpl implements WiringService {
 
 #### 代码示例
 
-​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/BridgePatter
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/BridgePattern
 
 ![image-20241027195531789](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027195531789.png)
 
@@ -669,3 +667,391 @@ public class CircleServiceImpl implements CircleService {
 ##### 测试
 
 ![image-20241027195427923](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027195427923.png)
+
+### 组合模式（CompositePattern）
+
+​	属于结构型设计模式。
+
+​	组合多个对象形成树形结构以表示“整体-部分”的层次结构。
+
+​	组合模式对单个对象和组合对象的使用具有一致性。
+
+​	当我们的项目中存在树形结构关系，例如组织管理等关系，每一层都可以管理下面的人，那么我们可以使用组合模式来管理这些人的关系。
+
+#### 代码示例
+
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/BridgePattern
+
+![image-20241028140912181](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241028140912181.png)
+
+##### 流程解读
+
+![image-20241028141623372](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241028141623372.png)
+
+##### 核心代码
+
+~~~java
+@Data
+public class Person {
+    private String name;
+    private String id;
+    private String job;
+    private ArrayList<Person> people;
+    public Person(String id,String name,String job){
+        this.job=job;
+        this.id=id;
+        this.name=name;
+        this.people=new ArrayList<Person>();
+    }
+    public void add(Person person){
+        this.people.add(person);
+    }
+    public void remove(Person person){
+        this.people.remove(person);
+    }
+}
+~~~
+
+##### 调用
+
+~~~java
+@Service
+public class PersonServiceImpl implements PersonService {
+    @Override
+    public String doPeroson() {
+        Person ceo=new Person("1","ceo","ceo");
+        Person manager=new Person("4","manager","manager");
+        Person clerk1=new Person("2","clerk1","clerk");
+        Person clerk2=new Person("3","clerk2","clerk");
+        ceo.add(manager);
+        manager.add(clerk1);
+        manager.add(clerk2);
+        StringBuilder s= new StringBuilder();
+        for(Person x:ceo.getPeople()){
+            for(Person y:x.getPeople()){
+                s.append(y.getId()).append(" ").append(y.getName()).append(" ").append(y.getJob());
+            }
+        }
+        return s.toString();
+    }
+}
+~~~
+
+##### 测试
+
+![image-20241028140732149](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241028140732149.png)
+
+### 装饰器模式（DecoratorPatetern）
+
+​	属于结构型设计模式。	
+
+​	动态地给一个对象添加一个额外的职责。
+
+​	通过将对象和对对象的修饰相分离，方便为对象添加一些属性和行为。
+
+#### 代码示例
+
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/DecoratorPattern
+
+![image-20241030164842434](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030164842434.png)
+
+##### 流程解读
+
+![image-20241030165332562](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030165332562.png)
+
+##### 核心代码
+
+~~~java
+public interface Shape {
+    String draw();
+}
+public class ShapeDecorator implements Shape{
+    protected Shape decorated;
+
+    public ShapeDecorator(Shape decorated){
+        this.decorated = decorated;
+    }
+
+    @Override
+    public String draw() {
+        return decorated.draw();
+    }
+}
+public class Circle implements Shape {
+    @Override
+    public String draw() {
+        return "圆型";
+    }
+}
+public class RedCircleDecorator extends ShapeDecorator{
+    public RedCircleDecorator(Shape shape){
+        super(shape);
+    }
+    @Override
+    public String draw(){
+        return decorated.draw()+"+红色";
+    }
+}
+~~~
+
+##### 调用
+
+~~~java
+@Service
+public class ShapeServiceImpl implements ShapeService {
+    @Override
+    public String draw() {
+        Circle circle=new Circle();
+        RedCircleDecorator redCircleDecorator=new RedCircleDecorator(new Circle());
+        return circle.draw()+"     "+redCircleDecorator.draw();
+    }
+}
+~~~
+
+##### 测试
+
+![image-20241030164949059](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030164949059.png)
+
+### 代理模式（ProxyPattern）
+
+​	属于结构型设计模式。
+
+​	给某一个对象提供一个代理，并由代理对象控制对原对象的引用。
+
+​	理解为，某对象因安全性等等问题，只能简介调用，那么我们可以使用代理模式，为他创建一个代理类，通过代理类来调用对象。
+
+#### 代码示例
+
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/ProxyPattern
+
+![](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030174515720.png)
+
+##### 流程解读
+
+![image-20241030174851157](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030174851157.png)
+
+##### 核心代码
+
+~~~java
+public interface Client {
+    public String getAns();
+}
+public class RemoteClient implements Client{
+    @Override
+    public String getAns() {
+        return "远程客户端";
+    }
+}
+public class ClientProxy implements Client{
+    RemoteClient client;
+    @Override
+    public String getAns() {
+        if(client==null){
+            client= new RemoteClient();
+        }
+        return client.getAns();
+    }
+}
+~~~
+
+##### 调用
+
+~~~java
+@Service
+public class RemoteServiceImpl implements RemoteService {
+    @Override
+    public String go() {
+        ClientProxy proxy=new ClientProxy();
+        return proxy.getAns();
+    }
+}
+~~~
+
+##### 测试
+
+![image-20241030174421383](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030174421383.png)
+
+### 享元模式（FlyweightPattern）
+
+​	属于结构型设计模式。
+
+​	运用共享技术有效地支持大量细粒度对象的复用。
+
+​	通俗来讲：对于项目中部分可能会重复用到的相似对象，我们可以写一个hash值，防止重复创建类似对象。
+
+#### 代码示例
+
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/ProxyPattern
+
+![image-20241030183145214](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030183145214.png)
+
+##### 流程解读
+
+![image-20241030183130310](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030183130310.png)
+
+##### 核心代码
+
+~~~java
+public interface Shape {
+    String get();
+}
+@Data
+public class Point implements Shape{
+    private int x;
+    private int y;
+    private String color;
+    public Point(String col){
+        this.color=col;
+    }
+    @Override
+    public String get() {
+        return this.x+this.y+this.color;
+    }
+}
+public class PointFlyweightFactory {
+    private static final HashMap<String,Point>p=new HashMap<>();
+    public static Point getPoint(String color){
+        Point point=p.get(color);
+        if(point==null){
+            point=new Point(color);
+            p.put(color,point);
+        }
+        return point;
+    }
+}
+~~~
+
+##### 调用
+
+~~~java
+@Service
+public class PointServiceImpl implements PointService {
+    @Override
+    public String go() {
+        String ans="";
+        Point point1 = PointFlyweightFactory.getPoint("red");
+        point1.setX(1);
+        point1.setY(1);
+        ans+= point1.get();
+        Point point2 = PointFlyweightFactory.getPoint("red");
+        point2.setX(1);
+        point2.setY(2);
+        ans+= " " +  point2.get();
+        return ans;
+    }
+}
+~~~
+
+##### 测试
+
+![image-20241030182718345](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030182718345.png)
+
+### 模板模式（TemplatePattern）
+
+​	属于行为型设计模式。
+
+​	定义一套逻辑框架，将他的实现推到子类。
+
+#### 代码示例
+
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/TemplatePattern
+
+![](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030190512243.png)
+
+##### 流程解读
+
+![image-20241030190820354](C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20241030190820354.png)
+
+##### 核心代码
+
+~~~java
+public interface DoOut {
+    public String doA();
+    public String doB();
+    public String doC();
+}
+public class DoOutP implements DoOut{
+    @Override
+    public String doA() {
+        return "A";
+    }
+    @Override
+    public String doB() {
+        return "B";
+    }
+    @Override
+    public String doC() {
+        return "C";
+    }
+    public String dododo(){
+        return this.doA()+" "+this.doB()+" "+this.doC();
+    }
+}
+~~~
+
+##### 调用
+
+~~~java
+@Service
+public class DoServiceImpl implements DoService{
+    @Override
+    public String go() {
+        return new DoOutP().dododo();
+    }
+}
+~~~
+
+##### 测试
+
+![image-20241030190417239](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030190417239.png)
+
+### 策略模式（StrategyPattern）
+
+​	行为型设计模式。
+
+​	定义一系列可能会用到的算法，封装起来，并让他们可以相互替换。
+
+#### 代码示例
+
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/StrategyPattern
+
+![image-20241030192819092](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030192819092.png)
+
+##### 流程解读
+
+![image-20241030193253346](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030193253346.png)
+
+##### 核心代码
+
+~~~java
+public class DoAlgorithm {
+    public String algorithm(int a){
+        if(a<=1000){
+            return "纯暴力";
+        }else{
+            return "其他算法";
+        }
+    }
+}	
+~~~
+
+##### 调用
+
+~~~java
+@Service
+public class ProServiceImpl implements ProService{
+    @Override
+    public String go() {
+        String s="";
+        s+= " 100:"+new DoAlgorithm().algorithm(100);
+        s+= " 1000:"+new DoAlgorithm().algorithm(1000);
+        s+= " 10000:"+new DoAlgorithm().algorithm(10000);
+        s+= " 100000:"+new DoAlgorithm().algorithm(100000);
+        return s;
+    }
+}
+~~~
+
+##### 测试
+
+![image-20241030192958791](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030192958791.png)

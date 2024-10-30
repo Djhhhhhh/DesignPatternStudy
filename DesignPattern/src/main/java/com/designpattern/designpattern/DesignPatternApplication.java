@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.designpattern.designpattern."+ "${patter}"})
+@ComponentScan(basePackages = {"com.designpattern.designpattern."+ "${pattern}"})
 public class DesignPatternApplication {
 
     public static void main(String[] args) {
