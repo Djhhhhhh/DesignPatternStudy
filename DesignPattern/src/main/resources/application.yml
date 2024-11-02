@@ -15,4 +15,8 @@ server:
 #  享元模式 FlyweightPattern
 #  模板模式 TemplatePattern
 #  策略模式 StrategyPattern
-pattern: StrategyPattern
+#  状态模式 StatePattern
+#  责任链模式 ChainOfResponsibilityPattern
+#  命令模式 CommandPattern
+#  观察者模式 ObserverPattern
+pattern: ObserverPattern

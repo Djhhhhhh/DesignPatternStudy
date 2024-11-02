@@ -1055,3 +1055,274 @@ public class ProServiceImpl implements ProService{
 ##### 测试
 
 ![image-20241030192958791](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030192958791.png)
+
+### 状态模式（StatePattern）
+
+​	属于行为型设计模式。
+
+​	允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。
+
+​	当我们在设计的过程中，某个对象存在大量状态，当状态转换之后，行为也会发生转变。
+
+#### 代码示例
+
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/StrategyPattern
+
+![image-20241101192538661](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241101192538661.png)
+
+##### 流程解读
+
+![image-20241101192831276](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241101192831276.png)
+
+##### 核心代码
+
+~~~java
+public interface State {
+    String message(Context context);
+}
+public class StopState implements State {
+    @Override
+    public String message(Context context) {
+        context.setState(new RunState());
+        return "Run message";
+    }
+}
+public class RunState implements State{
+    @Override
+    public String message(Context context) {
+        context.setState(new StopState());
+        return "Stop message";
+    }
+}
+@Data
+public class Context {
+    private State state;
+    public String request(){
+        return state.message(this);
+    }
+}
+~~~
+
+##### 调用
+
+```java
+@Service
+public class ContextServiceImpl implements ContextService {
+    @Override
+    public String go() {
+        String result="";
+        Context context=new Context();
+        context.setState(new RunState());
+        result += "/"+context.request();
+        result += "/"+context.request();
+        result += "/"+context.request();
+        result += "/"+context.request();
+        return result;
+    }
+}
+```
+
+##### 测试
+
+![image-20241101192437067](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241101192437067.png)
+
+### 责任链模式（ChainOfResponsibilityPattern）
+
+​	属于行为型设计模式。
+
+​	对于一整个链型操作组，建立责任链，避免接收者和请求者耦合。
+
+#### 代码示例
+
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/ChainOfResponsibilityPattern
+
+![image-20241101195941952](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241101195941952.png)
+
+##### 流程解读
+
+![image-20241101200210599](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241101200210599.png)
+
+##### 核心代码
+
+```java
+public abstract class AbstractHandler {
+    @Setter
+    protected AbstractHandler abstractHandler;
+
+    public String logMessage(String message){
+        if(abstractHandler!=null){
+             return message +"-"+ abstractHandler.logMessage(message);
+        }
+        return "-end";
+    }
+}
+public class Handler extends AbstractHandler{
+
+    public String log(String s){
+        return this.logMessage(s);
+    }
+}
+```
+
+##### 调用
+
+```java
+@Service
+public class HandlerServiceImpl implements HandlerService{
+    @Override
+    public String go() {
+        Handler handler1=new Handler();
+        Handler handler2=new Handler();
+        Handler handler3=new Handler();
+        Handler handler4=new Handler();
+        handler1.setAbstractHandler(handler2);
+        handler2.setAbstractHandler(handler3);
+        handler3.setAbstractHandler(handler4);
+        return handler1.log("111");
+    }
+}
+```
+
+##### 测试
+
+![image-20241101195822038](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241101195822038.png)
+
+### 命令模式（CommandPattern）
+
+​	行为型设计模式。
+
+​	将一个请求封装为一个对象，从而使用户可用不同的请求对客户进行参数化。
+
+​	将接受者和请求者完全解耦。
+
+#### 代码示例
+
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/CommandPattern
+
+![image-20241102193956277](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241102193956277.png)
+
+##### 流程解读
+
+![image-20241102194306194](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241102194306194.png)
+
+##### 核心代码
+
+~~~java
+public interface Command {
+    public String excute();
+}
+public class Manager {
+    private final ArrayList<Command> commands = new ArrayList<>();
+    public void addCommand(Command command) {
+        commands.add(command);
+    }
+    public String executeCommand() {
+        StringBuilder result= new StringBuilder();
+        for (Command command : commands) {
+            result.append(command.excute());
+        }
+        commands.clear();
+        return result.toString();
+    }
+}
+public class A implements Command{
+    @Override
+    public String excute() {
+        return "A";
+    }
+}
+~~~
+
+##### 调用
+
+```java
+@Service
+public class AServiceImpl implements AService{
+    @Override
+    public String go() {
+        Manager manager=new Manager();
+        manager.addCommand(new A());
+        manager.addCommand(new A());
+        manager.addCommand(new A());
+        return manager.executeCommand();
+    }
+}
+```
+
+##### 测试
+
+![image-20241102193911433](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241102193911433.png)
+
+### 观察者模式（ObserverPattern）
+
+​	行为型设计模式。	
+
+​	定义对象间的一种一对多的依赖关系，使得每当一个对象状态发生变化改变时，器相关依赖对象皆得到通知并自动更新。
+
+#### 代码示例
+
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/ObserverPattern
+
+![image-20241102200623546](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241102200623546.png)
+
+##### 流程解读
+
+![image-20241102200806772](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241102200806772.png)
+
+##### 核心代码
+
+~~~java
+public abstract class Number {
+    protected Subject subject;
+    public abstract String update();
+}
+public class Subject {
+   private List<Number> numbers = new ArrayList<Number>();
+   @Getter
+   private int state;
+   public String setState(int state) {
+      this.state = state;
+      return notifyAllNumber();
+   }
+   public void attach(Number number){
+      numbers.add(number);
+   }
+   public String notifyAllNumber(){
+      StringBuilder result= new StringBuilder();
+      for (Number number : numbers) {
+         result.append(number.update());
+      }
+      return result.toString();
+   }
+}
+public class BinaryNumber extends Number{
+ 
+   public BinaryNumber(Subject subject){
+      this.subject = subject;
+      this.subject.attach(this);
+   }
+ 
+   @Override
+   public String update() {
+      return "Binary String: "+ Integer.toBinaryString( subject.getState());
+   }
+}
+~~~
+
+##### 调用
+
+```java
+@Service
+public class NumberServiceImpl implements NumberService{
+    @Override
+    public String go() {
+        Subject subject=new Subject();
+        new BinaryNumber(subject);
+        return subject.setState(15);
+    }
+}
+```
+
+##### 测试
+
+![image-20241102200537415](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241102200537415.png)
