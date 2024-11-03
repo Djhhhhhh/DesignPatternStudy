@@ -1,3 +1,17 @@
+[TOC]
+
+# 前导
+
+github地址：[Djhhhhhh/DesignPatternStudy](https://github.com/Djhhhhhh/DesignPatternStudy)
+
+内涵代码示例源代码和文件原代码。
+
+所有内容参考自：软件体系结构与设计使用教程(第二版)，[设计模式 | 菜鸟教程](https://www.runoob.com/design-pattern/design-pattern-tutorial.html)
+
+因也是第一次具体学习设计模式，对于部分设计模式理解并不深刻，故可能存在大量错误与疏漏，欢迎补充。
+
+计划：因时序图只展示了调用的过程，对于部分设计模式并不能很好的展示，后续可能会补充UML类图来展示类与类之间的关系；额外开辟文章解释设计模式优缺点，组合关系，比较部分设计模式的相似处，设计模式相关面试题。
+
 # 设计模式
 
 ​	一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性、程序的重用性。 
@@ -44,11 +58,42 @@
 
 #### 创建型设计模式
 
-#### 结果型设计模式
+| 名称                                   | 通俗解释                                       |
+| -------------------------------------- | ---------------------------------------------- |
+| 简单工厂模式（SimpleFactoryPattern）   | 根据参数不同生成不同实例返回                   |
+| 工厂方法模式（FactoryMethodPattern）   | 根据后续需求不同通过添加新的工厂来添加新的产品 |
+| 抽象工厂模式（AbstractFactoryPattern） | 通过抽象工厂创建具体工厂创建产品               |
+| 单例模式（SingletonPattern）           | 系统中存在单实例对象时使用                     |
+| 原型模式（PrototypePattern）           | 存在复杂对象的时候，提供clone方法              |
+| 建造者模式（BuildePattern）            | 创建复杂对象，零件种类不变，组装方式经常改变   |
+
+#### 结构型设计模式
+
+| 名称                            | 通俗解释                                   |
+| ------------------------------- | ------------------------------------------ |
+| 外观模式（FacadePattern）       | 为接口创建一个统一的接口来调用             |
+| 适配器模式（AdapterPattern）    | 将一个类为新环境变化转变创建适配器         |
+| 桥接模式（BridgePattern）       | 将对象抽象部分与实体分离，改变不会互相影响 |
+| 组合模式（CompositePattern）    | 将一些对象组合到一起，一个改变多个改变     |
+| 装饰器模式（DecoratorPatetern） | 将对象的部分行为属性分离，创建装饰器       |
+| 代理模式（ProxyPattern）        | 因安全性等问题，将对象的操作交给代理类     |
+| 享元模式（FlyweightPattern）    | 创建大量重复对象，通过hash来防止重复创建   |
 
 #### 行为型设计模式
 
-
+| 名称                                       | 通俗解释                                                |
+| ------------------------------------------ | ------------------------------------------------------- |
+| 模板模式（TemplatePattern）                | 定义行为逻辑，将实现推到子类                            |
+| 策略模式（StrategyPattern）                | 将可能使用到的算法封装，通过不同的策略可以相互替换      |
+| 状态模式（StatePattern）                   | 当状态发生改变的时候行为也会发生变化                    |
+| 责任链模式（ChainOfResponsibilityPattern） | 对于一组链式操作，建立责任链，解耦接收者和请求者        |
+| 命令模式（CommandPattern）                 | 将请求参数化，解耦接收者和请求者                        |
+| 观察者模式（ObserverPattern）              | 当一堆对象中一个发生变化，其余对象跟着一起变化          |
+| 中介者模式（MediatorPattern）              | 用中介对象封装调用                                      |
+| 迭代器模式（IteratorPattern）              | 字面意思，迭代器                                        |
+| 访问者模式（VisitorPattern）               | 通过添加visitor类，使得不改变元素的前提下定义新行为模式 |
+| 备忘录模式（MementoPattern）               | 将对象之前的状态保存在备忘录中，需要的时候可以回溯      |
+| 解释器模式（InterpreterPattern）           | 解释语言的文法                                          |
 
 ## 23+1种设计模式
 
@@ -1326,3 +1371,221 @@ public class NumberServiceImpl implements NumberService{
 ##### 测试
 
 ![image-20241102200537415](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241102200537415.png)
+
+### 中介者模式（MediatorPattern）
+
+​	属于行为型设计模式。
+
+​	用一个中介对象来封装一系列的对象交互，中介者使各个对象不需要显示地互相调用，从而使其耦合松散，而且可以独立地改变它们之间的交互。
+
+#### 代码示例
+
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/MediatorPattern
+
+![image-20241103141241012](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241103141241012.png)
+
+##### 流程解读
+
+![image-20241103141545144](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241103141545144.png)
+
+##### 核心代码
+
+~~~java
+public class Mediator {
+    public static String message(User user,String message){
+        return user+":"+message+"---->";
+    }
+}
+@Data
+public class User {
+    String name;
+    public User(String name){
+        this.name=name;
+    }
+    public String sendMessage(String message){
+        return Mediator.message(this,message);
+    }
+}
+~~~
+
+##### 调用
+
+~~~java
+@Service
+public class TalkServiceImpl implements TalkServcie{
+    @Override
+    public String go() {
+        User a=new User("aa");
+        User b=new User("bb");
+        String result="";
+        result+=a.sendMessage("WoShiAa");
+        result+=b.sendMessage("WoShiBb");
+        return result;
+    }
+}
+~~~
+
+##### 测试
+
+![image-20241103141151026](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241103141151026.png)
+
+​	
+
+### 迭代器模式（IteratorPattern）
+
+​	属于行为型设计模式。
+
+​	提供一种方法来访问聚合对象，而用暴露这个对象的内部表示。
+
+​	迭代器模式在大部分语言类库中已经实现，现在已经很少使用自定义迭代器，在此不做出实例解释，通过联想到大部分语言的迭代器即可理解相应逻辑。
+
+~~~c++
+for(auto a : array)
+~~~
+
+### 访问者模式（VisitorPattern）
+
+​	属于行为型设计模式。
+
+​	表示一个作用于某对象结构中的个元素的操作，它使人们可以在不改变各元素的类的前提下定义作用于这些元素的新操作。
+
+​	通过只添加visitor类，来增加对象的不同行为模式。
+
+#### 代码示例
+
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/VisitorPattern
+
+![image-20241103160310203](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241103160310203.png)
+
+##### 流程解读
+
+![image-20241103160847673](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241103160847673.png)
+
+##### 核心代码
+
+```java
+public interface P {
+    public String run(Visitor visitor);
+}
+public class B implements P{
+    @Override
+    public String run(Visitor visitor) {
+        return visitor.visitor(this);
+    }
+}
+public class A implements P{
+    @Override
+    public String run(Visitor visitor) {
+        return visitor.visitor(this);
+    }
+}public class DisaplayVisitor implements Visitor{
+    @Override
+    public String visitor(A a) {
+        return "AAAA";
+    }
+
+    @Override
+    public String visitor(B a) {
+        return "BBBB";
+    }
+}
+public interface Visitor {
+    public String visitor(A a);
+    public String visitor(B a);
+}
+```
+
+##### 调用
+
+```java
+@Service
+public class PpServiceImpl implements PpService{
+
+    @Override
+    public String go() {
+        A a = new A();
+        B b=new B();
+        return a.run(new DisaplayVisitor())+b.run(new DisaplayVisitor());
+    }
+}
+```
+
+##### 测试
+
+![image-20241103160158298](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241103160158298.png)
+
+### 备忘录模式（MementoPattern）
+
+​	属于行为型设计模式。
+
+​	在不破坏封装的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态，这样可以在以后将对象回复到原先保存的状态。
+
+#### 代码示例
+
+​	所在文件夹：DesignPattern/src/main/java/com/designpattern/designpattern/MementoPattern
+
+![image-20241103162513091](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241103162513091.png)
+
+##### 流程解读
+
+![image-20241103162827127](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241103162827127.png)
+
+##### 核心代码
+
+```java
+@Data
+public class A {
+    String state;
+    public A(){
+    }
+    public A(A a){
+        this.state=a.state;
+    }
+}
+public class Memento {
+    private List<A> mementoList = new ArrayList<A>();
+
+    public void add(A state){
+        mementoList.add(state);
+    }
+
+    public A get(int index){
+        return mementoList.get(index);
+    }
+}
+```
+
+##### 调用
+
+```java
+@Service
+public class MementoServiceImpl implements MementoService{
+    @Override
+    public String go() {
+        Memento memento = new Memento();
+        A a = new A();
+        a.setState("11");
+        memento.add(new A(a));
+        String res="";
+        res+=a.getState();
+        a.setState("22");
+        memento.add(new A(a));
+        res+=a.getState();
+        a=memento.get(0);
+        res+=a.getState();
+        return res;
+    }
+}
+```
+
+##### 测试
+
+![image-20241103162430026](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241103162430026.png)
+
+### 解释器模式（InterpreterPattern）
+
+​	行为型设计模式。
+
+​	定义语言的文法，并建立一个解释器来解释该语言中的句子。
+
+​	显而易见，正则表达式属于该模式，故在此不做解释代码示例。

@@ -19,4 +19,9 @@ server:
 #  责任链模式 ChainOfResponsibilityPattern
 #  命令模式 CommandPattern
 #  观察者模式 ObserverPattern
-pattern: ObserverPattern
+#  中介者模式 MediatorPattern
+#  迭代器模式 IteratorPattern *因过于简单，故未作实现
+#  访问者模式 VisitorPattern
+#  备忘录模式 MementoPattern
+#  解释器模式 MementoPattern *存在正则表达式这种显而易见的例子，故未作实现
+pattern: MementoPattern
