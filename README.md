@@ -113,7 +113,11 @@ github地址：[Djhhhhhh/DesignPatternStudy](https://github.com/Djhhhhhh/DesignP
 
 ![image-20241014195308942](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241014195308942.png)
 
-##### 流程解读
+##### UML类图
+
+![image-20241127182142551](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241127182142551.png)
+
+##### 代码执行流程解读
 
 ![image-20241014200305418](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241014200305418.png)
 
@@ -150,7 +154,7 @@ CodeSandbox codeSandbox = CodeSandboxFactory.newInstance(type);
 
 ​	工厂父类负责定义创建产品对象的公共接口，工厂子类负责生成具体的产品对象，目的是将产品类的实例化操作延迟到工厂子类中完成，即通过子类确定究竟实例化那个产品类。
 
-​	该方法应该应用在后续需求不确定的时候，有可能会加上大量的产品，可以不用修改代码，添加新的工厂从而添加新的产品。
+​	将类的实例化（具体产品的创建）延迟到工厂类的子类（具体工厂）中完成，即由子类来决定应该实例化（创建）哪一个类。（解决了简单工厂违反开放封闭原则的缺点）
 
 #### 代码示例
 
@@ -158,7 +162,11 @@ CodeSandbox codeSandbox = CodeSandboxFactory.newInstance(type);
 
 ![image-20241015184005851](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241015184005851.png)
 
-##### 流程解读
+##### UML类图
+
+![image-20241127191200181](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241127191200181.png)
+
+##### 代码执行流程解读
 
 ![image-20241015184546580](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241015184546580.png)
 
@@ -210,7 +218,11 @@ return codeSandbox1.executeCode() + " "+codeSandbox2.executeCode();
 
 ![image-20241015193307245](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241015193307245.png)
 
-##### 流程解读
+##### UML类图
+
+![image-20241127185645803](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241127185645803.png)
+
+##### 代码执行流程解读
 
 ![image-20241015193637778](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241015193637778.png)
 
@@ -264,7 +276,11 @@ return codeSandbox1.executeCode()+" "+codeSandbox2.executeCode();
 
 ![image-20241016183323847](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241016190326968.png)
 
-##### 流程解读
+##### UML类图
+
+![image-20241127192024345](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241127192024345.png)
+
+##### 代码执行流程解读
 
 ![image-20241016184158955](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241016184158955.png)
 
@@ -349,7 +365,7 @@ result+=hungrySingletConfig.getTime()+"\n";
 
 ![image-20241016194845868](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241016194845868.png)
 
-##### 流程解读
+##### 代码执行流程解读
 
 ![image-20241016195228920](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241016195228920.png)
 
@@ -424,7 +440,11 @@ public class TankServiceImpl implements TankService {
 
 ![image-20241027163039015](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027163039015.png)
 
-##### 流程解读
+##### UML类图
+
+![image-20241127193558749](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241127193558749.png)
+
+##### 代码执行流程解读
 
 ![image-20241027162925542](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027162925542.png)
 
@@ -498,7 +518,11 @@ public class WordServiceImpl implements WordService {
 
 ![image-20241027192054581](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027192054581.png)
 
-##### 流程解读
+##### UML类图
+
+![image-20241127194803803](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241127194803803.png)
+
+##### 代码执行流程解读
 
 ![image-20241027173250780](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027173250780.png)
 
@@ -558,7 +582,11 @@ public class CSserviceImpl implements CService {
 
 ![image-20241027192035592](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027192035592.png)
 
-##### 流程解读
+##### UML类图
+
+![image-20241127195644616](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241127195644616.png)
+
+##### 代码执行流程解读
 
 ![image-20241027192004356](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027192004356.png)
 
@@ -651,7 +679,11 @@ public class WiringServiceImpl implements WiringService {
 
 ![image-20241027195531789](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027195531789.png)
 
-##### 流程解读
+##### UML类图
+
+![image-20241127200316146](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241127200316146.png)
+
+##### 代码执行流程解读
 
 ![image-20241027195926276](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241027195926276.png)
 
@@ -729,7 +761,7 @@ public class CircleServiceImpl implements CircleService {
 
 ![image-20241028140912181](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241028140912181.png)
 
-##### 流程解读
+##### 代码执行流程解读
 
 ![image-20241028141623372](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241028141623372.png)
 
@@ -800,7 +832,11 @@ public class PersonServiceImpl implements PersonService {
 
 ![image-20241030164842434](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030164842434.png)
 
-##### 流程解读
+##### UML类图
+
+![image-20241127200913013](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241127200913013.png)
+
+##### 代码执行流程解读
 
 ![image-20241030165332562](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030165332562.png)
 
@@ -871,7 +907,11 @@ public class ShapeServiceImpl implements ShapeService {
 
 ![](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030174515720.png)
 
-##### 流程解读
+##### UML类图
+
+![image-20241127201320427](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241127201320427.png)
+
+##### 代码执行流程解读
 
 ![image-20241030174851157](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030174851157.png)
 
@@ -930,7 +970,9 @@ public class RemoteServiceImpl implements RemoteService {
 
 ![image-20241030183145214](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030183145214.png)
 
-##### 流程解读
+
+
+##### 代码执行流程解读
 
 ![image-20241030183130310](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030183130310.png)
 
@@ -1003,7 +1045,7 @@ public class PointServiceImpl implements PointService {
 
 ![](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030190512243.png)
 
-##### 流程解读
+##### 代码执行流程解读
 
 ![image-20241030190820354](C:\Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20241030190820354.png)
 
@@ -1062,7 +1104,7 @@ public class DoServiceImpl implements DoService{
 
 ![image-20241030192819092](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030192819092.png)
 
-##### 流程解读
+##### 代码执行流程解读
 
 ![image-20241030193253346](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241030193253346.png)
 
@@ -1115,7 +1157,7 @@ public class ProServiceImpl implements ProService{
 
 ![image-20241101192538661](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241101192538661.png)
 
-##### 流程解读
+##### 代码执行流程解读
 
 ![image-20241101192831276](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241101192831276.png)
 
@@ -1183,7 +1225,7 @@ public class ContextServiceImpl implements ContextService {
 
 ![image-20241101195941952](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241101195941952.png)
 
-##### 流程解读
+##### 代码执行流程解读
 
 ![image-20241101200210599](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241101200210599.png)
 
@@ -1246,7 +1288,7 @@ public class HandlerServiceImpl implements HandlerService{
 
 ![image-20241102193956277](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241102193956277.png)
 
-##### 流程解读
+##### 代码执行流程解读
 
 ![image-20241102194306194](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241102194306194.png)
 
@@ -1310,7 +1352,7 @@ public class AServiceImpl implements AService{
 
 ![image-20241102200623546](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241102200623546.png)
 
-##### 流程解读
+##### 代码执行流程解读
 
 ![image-20241102200806772](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241102200806772.png)
 
@@ -1384,7 +1426,7 @@ public class NumberServiceImpl implements NumberService{
 
 ![image-20241103141241012](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241103141241012.png)
 
-##### 流程解读
+##### 代码执行流程解读
 
 ![image-20241103141545144](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241103141545144.png)
 
@@ -1457,7 +1499,7 @@ for(auto a : array)
 
 ![image-20241103160310203](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241103160310203.png)
 
-##### 流程解读
+##### 代码执行流程解读
 
 ![image-20241103160847673](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241103160847673.png)
 
@@ -1526,7 +1568,7 @@ public class PpServiceImpl implements PpService{
 
 ![image-20241103162513091](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241103162513091.png)
 
-##### 流程解读
+##### 代码执行流程解读
 
 ![image-20241103162827127](https://raw.githubusercontent.com/Djhhhhhh/MyPic/master/image-20241103162827127.png)
 
