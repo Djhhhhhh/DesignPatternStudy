@@ -9,13 +9,16 @@ import lombok.Getter;
 public class LazyConfig {
     private String time;
     private String name;
-    private static final LazyConfig lazySingletonConfig = new LazyConfig();
+    private static LazyConfig lazyConfig =null;
     private LazyConfig(){
         initConfig();
         System.out.println("产生实例");
     }
     public static LazyConfig getInstance(){
-        return lazySingletonConfig;
+        if(lazyConfig==null){
+            lazyConfig = new LazyConfig();
+        }
+        return lazyConfig;
     }
     private void initConfig(){
         this.name="Djhhh";

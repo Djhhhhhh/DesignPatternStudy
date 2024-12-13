@@ -289,19 +289,19 @@ return codeSandbox1.executeCode()+" "+codeSandbox2.executeCode();
 饿汉式单例模式
 
 ~~~java
+/**
+ * 饿汉式单例模式
+ */
 @Getter
 public class HungryConfig {
     private String time;
     private String name;
-    private static HungrySingletConfig hungrySingleConfig =null;
-    private  HungrySingletConfig(){
+    private static HungryConfig hungrySingleConfig = new HungryConfig();
+    private HungryConfig(){
         initConfig();
         System.out.println("产生实例");
     }
-    public static HungrySingletConfig getInstance(){
-        if(hungrySingleConfig==null){
-            hungrySingleConfig = new HungrySingletConfig();
-        }
+    public static HungryConfig getInstance(){
         return hungrySingleConfig;
     }
     private void initConfig(){
@@ -314,23 +314,30 @@ public class HungryConfig {
 懒汉式单例模式
 
 ```java
+/**
+ * 懒汉式单例模式
+ */
 @Getter
 public class LazyConfig {
     private String time;
     private String name;
-    private static final LazySingletonConfig lazySingletonConfig = new LazySingletonConfig();
-    private LazySingletonConfig(){
+    private static LazyConfig lazyConfig =null;
+    private LazyConfig(){
         initConfig();
         System.out.println("产生实例");
     }
-    public static LazySingletonConfig getInstance(){
-        return lazySingletonConfig;
+    public static LazyConfig getInstance(){
+        if(lazyConfig==null){
+            lazyConfig = new LazyConfig();
+        }
+        return lazyConfig;
     }
     private void initConfig(){
         this.name="Djhhh";
         this.time="Time is now";
     }
 }
+
 ```
 
 ##### 调用

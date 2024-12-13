@@ -9,15 +9,12 @@ import lombok.Getter;
 public class HungryConfig {
     private String time;
     private String name;
-    private static HungryConfig hungrySingleConfig =null;
+    private static HungryConfig hungrySingleConfig = new HungryConfig();
     private HungryConfig(){
         initConfig();
         System.out.println("产生实例");
     }
     public static HungryConfig getInstance(){
-        if(hungrySingleConfig==null){
-            hungrySingleConfig = new HungryConfig();
-        }
         return hungrySingleConfig;
     }
     private void initConfig(){

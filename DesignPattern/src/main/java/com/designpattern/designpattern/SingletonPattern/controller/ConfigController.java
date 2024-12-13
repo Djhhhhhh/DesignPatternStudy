@@ -1,4 +1,4 @@
-package com.designpattern.designpattern.SingletonPattern.Controller;
+package com.designpattern.designpattern.SingletonPattern.controller;
 
 import com.designpattern.designpattern.SingletonPattern.service.ConfigService;
 import org.springframework.web.bind.annotation.GetMapping;
